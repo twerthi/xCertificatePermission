@@ -1,0 +1,10 @@
+[ClassVersion("1.0"), FriendlyName("xCertificatePermission")]
+class xCertificatePermission : OMI_BaseResource
+{
+    [Key,Description("The thumbprint (unique identifier) of the certificate you're importing.")] string Thumbprint;
+    [Key,Description("The Windows Certificate Store Location to import the certificate to."),ValueMap{"LocalMachine", "CurrentUser"},Values{"LocalMachine", "CurrentUser"}] string Location;
+    [Key,Description("The Windows Certificate Store Name to import the certificate to.")] string Store;
+    [Write,Description("Specifies whether the certificate should be present or absent."),ValueMap{"Present", "Absent"},Values{"Present", "Absent"}] string Ensure;
+	[Write,Description("User account to apply permission.")] string UserAccount;
+	[Write,Description("Permission to apply")] string Permission;
+};
