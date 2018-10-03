@@ -343,17 +343,21 @@ function Test-TargetResource
 	# Check to see if identity is present
 	$accessRule = $certAcl.Access | Where-Object {$_.IdentityReference -eq $UserAccount}
 
+	# Get enum value
+	$enumValue = [System.Security.AccessControl.FileSystemRights] $Permission
+
 	# Determine which path to take
     switch($Ensure)
     {
         "Present"
         {
-
 			# Check to see if the user is in there
 			if ($accessRule)
 			{
 				# Check the file system rights
-				if ($accessRule.FileSystemRights.ToString() -ne $Permission)
+				#if ($accessRule.FileSystemRights.ToString() -ne $Permission)
+				
+				if (!(($accessRule.FileSystemRights -band $enumValue) -eq $enumValue))
 				{
 					# Not in desired state
 					$desiredState = $false
