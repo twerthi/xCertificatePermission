@@ -1,5 +1,7 @@
 # xCertificatePermission
 PowerShell DSC module for setting permissions on private keys of certificates.
+This solution works in the cases where the certificate property
+HasPrivateKey is true and the PrivateKey property is null.
 
 ## Installation
 
@@ -40,5 +42,29 @@ This resource is used to assign permissions to a certificate within a certificat
 * **`[String]` UserAccount** _(Write)_: User account to assign the permission to.
 * **`[String]` Permission** _(Write)_: Permission to assign or remove. { Read | FullControl}
 
-#### Examples
-* 
+## Examples
+#### Assign read permission to user account
+```powershell
+Configuration AssignPermissionToCertificate
+{
+    Import-DscResource -Name xCertificatePermission
+    # A Configuration block can have zero or more Node blocks
+    Node localhost
+    {
+        # Next, specify one or more resource blocks
+
+        xCertificatePermission MyPermission
+        {
+            Ensure = "Present"
+            Location   = "LocalMachine"
+            Thumpprint = "fbbd43ab6d8f297d0495b5d603e743fc5aab3f36"
+            Store = "My"
+            UserAccount = "CONTOSO\User1"
+            Permission = "Read"
+        }
+    }
+}
+
+AssignPermissionToCertificate
+```
+
