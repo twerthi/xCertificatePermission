@@ -19,12 +19,16 @@ A full list of changes in each version can be found in the [change log](CHANGELO
   
 ### xCertificatePermission
 
-This resource is used to create, remove, and update an Always On Availability Group.
-It will also manage the Availability Group replica on the specified node.
+This resource is used to assign permissions to a certificate within a certificate store.
 
 #### Requirements
 
 * Target machine must be running Windows Server 2008 R2 or later.
+
+#### Credit
+
+* Credit to https://www.sysadmins.lv/blog-en/retrieve-cng-key-container-name-and-unique-name.aspx for the
+  unmanaged code portion of this solution.
 
 #### Parameters
 
