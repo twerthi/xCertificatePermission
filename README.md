@@ -17,7 +17,7 @@ A full list of changes in each version can be found in the [change log](CHANGELO
 * [**xCertificatePermission**](#xcertificatepermission)
   resource to grant a user permission to read the private key of a certificate.
   
-### SqlAG
+### xCertificatePermission
 
 This resource is used to create, remove, and update an Always On Availability Group.
 It will also manage the Availability Group replica on the specified node.
